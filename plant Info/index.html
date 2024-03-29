@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Info</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1 style="font-size: 50px;"><span>Eco</span><span1>Harmony</span1></h1>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Forum</a></li>
+                <li><a href="#">Plant Info</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#"><button>Donate</button></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main content -->
+    <div class="main-content">
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for a plant...">
+        <button onclick="searchPlant()">Search</button>
+    </div>
+    <div class="plant-info" id="plantInfo"></div>
+    <div class="plants-container">
+        <div class="plant" id="plant1">
+            <img src="images/pexels-photo-1171581.webp" alt="Plant 1">
+            <h2>Lotus
+            </h2>
+            <ul>
+                <li> Lotus plants are aquatic and thrive in water. </li>
+                <li> They prefer full sun, meaning they need at least 6 to 8 hours of direct sunlight daily.</li>
+                <li>Lotus plants grow best in loamy soil that is rich in organic matter. </li>
+                <li> Lotus plants prefer warm temperatures .</li>
+            </ul>
+            <button class="read-more-btn">Read More</button>
+        </div>
+        <div class="plant" id="plant2">
+            <img src="images/tulip-red-plant-flower-68477.webp" alt="Plant 2">
+            <h2>Tulip</h2>
+            <ul>
+                <li>Tulips generally require regular watering, especially during their active growth phase in spring.</li>
+                <li>They need at least 6 hours of direct sunlight per day to bloom properly.</li>
+                <li>Sandy or loamy soil that is rich in organic matter is ideal for tulips.</li>
+                <li>Tulips like soil that is consistently moist but not waterlogged. </li>
+            </ul>
+            <button class="read-more-btn">Read More</button>
+        </div>
+        <div class="plant" id="plant3">
+            <img src="images/sunflower-sun-summer-yellow.jpg" alt="Plant 3">
+            <h2>Sunflower</h2>
+            <ul>
+                <li>Provide them with about 1 to 1.5 inches of water per week.</li>
+                <li>Plant them in an area that receives at least 6 to 8 hours of direct sunlight per day for optimal growth and flowering.</li>
+                <li>Sunflowers prefer well-draining soil with a pH level between 6.0 and 7.5. </li>
+                <li> They also benefit from soil that is well-drained and not waterlogged.</li>
+            </ul>
+            <button class="read-more-btn">Read More</button>
+        </div>
+        <div class="plant" id="plant4">
+            <img src="images/garden-rose-red-pink-56866.webp" alt="Plant 4">
+            <h2>Rose</h2>
+            <ul>
+                <li>Roses generally require about 1 inch of water per week.</li>
+                <li>Roses thrive in full sunlight, meaning they need at least 6 hours of direct sunlight per day.</li>
+                <li>Well-draining soil is crucial for roses. Sandy loam or loamy soil is ideal.</li>
+                <li>Mulching around the base of the plants helps retain moisture and suppress weeds.</li>
+            </ul>
+            <button class="read-more-btn">Read More</button>
+        </div>
+    </div>
+</div>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h1 style="font-size: 48px;color: white;"><span>Eco</span>Harmony</h1>
+                <p class="pol" style="font-size: 24px;">Creating a greener world together</p>
+            </div>
+            <div class="footer-right">
+                <ul class="footer-nav">
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="script.js"></script>
+</body>
+</html>
