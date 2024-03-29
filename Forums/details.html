@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Posts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital@1&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <nav class="navigation hide" id="navigation">
+                <ul class="nav-list">
+                    <span class="close-icon" onclick="showIconBar()"><i class="fa fa-close"></i></span>
+                    <li class="nav-item">
+                        <a href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Forum</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Profile</a>
+                    </li>
+                </ul>
+            </nav>
+            <a href="#" class="bar-icon" id="iconBar" onclick="hideIconBar()"><i class="fa fa-bars"></i></a>
+            <div class="brand">Forums</div>
+        </div>
+        <div class="search-box">
+            <div>
+                <select name="search-box" id="">
+                    <option value="Everything">Everything</option>
+                    <option value="Titles">Titles</option>
+                    <option value="Descriptions">Descriptions</option>
+                </select>
+                <input type="text" name="q" placeholder="search ...">
+                <button type="submit" name="search"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="navigate">
+            <span><a href="">My Forum - Forums</a> >> <a href="#">Random Topic</a></span>
+        </div>
+        <div class="topic-container">   
+            <div class="head">
+                <div class="authors">Author</div>
+                <div class="content">Topic:  (Read  Times)</div>
+            </div>
+
+            <div class="body">
+                <div class="authors">
+                    <div class="username"><a href="">Username</a></div>
+                    <div>Role</div>
+                    <img src="https://cdn.iconscout.com/icon/free/png-512/free-avatar-373-456325.png?f=webp&w=256" alt="">
+                    <div>Posts: <u></u></div>
+                    <div>Points: <u></u></div>
+                </div>
+                <div class="content">
+                    {{post.content|safe}}
+                    <br>
+                    <div class="comment">
+                        <button onclick="showComment()">Comment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    <footer>
+        <span>&copy;<b>EcoHarmony | All rights reserved</b></span>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
