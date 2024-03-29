@@ -1,0 +1,222 @@
+/* Reset some default browser styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+/* Basic styles for the header */
+header {
+    background-color: transparent;
+    padding: 20px;
+    height: 85px;
+    position: absolute; /* Position the header on top of the slideshow */
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2; 
+}
+
+.logo {
+    float: left;
+}
+
+.nav-list {
+    list-style-type: none;
+    float: right;
+}
+
+.nav-list li {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative; /* Add relative positioning */
+}
+
+.nav-list li a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-size: 40px;
+    font-weight: 600;
+    position: relative; /* Add relative positioning */
+}
+
+/* Add line styles */
+.nav-list li::after {
+    content: ''; /* Add empty content */
+    position: absolute;
+    bottom: 1px; /* Position the line below the text */
+    left: 0;
+    width: 100%; /* Make the line span the entire width of the parent */
+    height: 5px; /* Set the height of the line */
+    background-color: transparent; /* Set initial background color to transparent */
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.nav-list li a:hover {
+    color: rgb(40, 158, 11);
+}
+
+/* Change line color on hover */
+.nav-list li:hover::after {
+    background-color: rgb(18, 168, 28); /* Change the background color of the line */
+}
+
+.nav-list li:last-child::after {
+    display: none; /* Hide the line for the last list item (donation button) */
+}
+
+button {
+    border-radius: 25px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border-color: green;
+    padding: 5px;
+    font-size: 40px;
+    transition: box-shadow 0.3s ease; /* Add transition effect */
+}
+
+button:hover {
+    color: black;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+}
+
+.contact-details {
+    flex: 1;
+    margin-bottom: 20px; /* Add margin to create space between text area and image */
+}
+
+.img {
+    margin-left: 100px;
+}
+
+h1 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #666;
+}
+
+.contact-info {
+    margin-bottom: 20px;
+}
+.contact-info p {
+    margin: 5px 0;
+}
+
+form {
+    margin-top: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="submit"] {
+    background-color: #00ff40;
+    font-weight: bold;
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+    background-color: #12b300;
+    color: #fff;
+}
+
+/* Styles for footer */
+footer {
+    background-color: #13470b;
+    color: white;
+    padding: 20px;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-left,
+.footer-right {
+    flex: 1;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+.footer-nav li {
+    margin-bottom: 10px;
+    list-style-type: none;
+}
+
+.footer-nav li a {
+    font-size: 48px;
+    color: white;
+    text-decoration: none;
+}
+
+.pol {
+    color: #ffffff;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: row;
+    }
+
+    .contact-details {
+        padding-right: 0;
+        margin-bottom: 20px;
+    }
+
+    .footer-content {
+        flex-direction: row;
+    }
+
+    .footer-right {
+        margin-top: 20px;
+    }
+}
+span {
+    color: #12b300;
+}
