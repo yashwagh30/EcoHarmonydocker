@@ -4,6 +4,6 @@ FROM nginx:alpine
 
 COPY . /usr/share/nginx/html
 
-EXPOSE 3001
+EXPOSE 3002
 
 CMD ["nginx", "-g", "daemon off;"]
