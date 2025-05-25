@@ -1,9 +1,6 @@
 services:
-  ecoharmonydocker:
-    build:
-      context: .
-      dockerfile: docker-compose.yml
+  ecoharmony-web:
+    build: .
     ports:
-      - "3000:5000"
-    restart: unless-stopped
-
+      - "3000:80"
+    restart: always
