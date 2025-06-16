@@ -6,12 +6,11 @@ pipeline {
         SONARQUBE_SERVER = 'Local-SonarQube'
     }
 
-    stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/yashwagh30/EcoHarmonydocker.git'
-            }
-        }
+   stage('Clone Repository') {
+    steps {
+        git branch: 'main', url: 'https://github.com/yashwagh30/EcoHarmonydocker.git'
+    }
+}
 
         stage('SonarQube Analysis') {
             steps {
