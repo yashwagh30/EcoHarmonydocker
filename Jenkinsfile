@@ -6,11 +6,6 @@ pipeline {
         SONARQUBE_SERVER = 'Local-SonarQube'
     }
 
-    tools {
-        // If you're using Maven or Gradle, declare it here.
-        // sonar-scanner is NOT declared here
-    }
-
     stages {
         stage('Clone Repository') {
             steps {
