@@ -1,15 +1,10 @@
 pipeline {
     agent any
 
-    tools {
-        // This should match the name you gave under "Manage Jenkins" > Global Tool Configuration
-        sonarScanner 'SonarScanner'
-    }
-
     environment {
-        // These are injected from the SonarQube server config (defined in Jenkins)
-        SONAR_HOST_URL = 'http://localhost:9000'     // Replace with your actual SonarQube server URL
-        SONAR_AUTH_TOKEN = credentials('SONAR_TOKEN') // You must create this in Jenkins credentials
+        // These are passed to sonar-scanner via env if needed
+        SONAR_HOST_URL = 'http://localhost:9000'     // Change this if needed
+        SONAR_AUTH_TOKEN = credentials('SONAR_TOKEN') // Your Jenkins credentials ID
     }
 
     stages {
@@ -21,7 +16,9 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
+                // Uses SonarQube server settings defined in Jenkins > Configure System
                 withSonarQubeEnv('Local-SonarQube') {
+                    // If sonar-scanner is on PATH or installed via Jenkins SonarQube Scanner plugin
                     bat '''
                         sonar-scanner ^
                           -Dsonar.projectKey=EcoHarmony ^
@@ -43,4 +40,3 @@ pipeline {
         }
     }
 }
-
