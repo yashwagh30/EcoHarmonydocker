@@ -29,4 +29,4 @@ pipeline {
 
     // Make sure to bind SONAR_TOKEN from credentials
     // either in the pipeline UI or using credentials binding plugin
-}
+
