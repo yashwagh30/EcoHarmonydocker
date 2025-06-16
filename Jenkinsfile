@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // This should match the name of your SonarScanner in Jenkins tools
-        sonarQubeScanner = 'SonarScanner'
+        sonarQubeScanner 'SonarScanner'
     }
 
     environment {
@@ -11,12 +11,8 @@ pipeline {
         SONARQUBE_ENV = 'SONAR_TOKEN'
     }
 
-    environment {
-        SONAR_TOKEN = credentials('sqa_2c3afc0b54d4b089a98d86dc3f600eb077636683')  // Add this as Jenkins secret
-    }
-
     stages {
-        stage('Checkout') {
+        stage('Clone Repository') {
             steps {
                 git 'https://github.com/yashwagh30/EcoHarmonydocker.git'
             }
@@ -24,8 +20,8 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('Local-SonarQube') {
-                    sh 'sonar-scanner'
+                withSonarQubeEnv("${SONARQUBE_ENV}") {
+                    sh 'sonar-scanner -Dsonar.projectKey=eco-harmony -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login='sqa_2c3afc0b54d4b089a98d86dc3f600eb077636683'
                 }
             }
         }
