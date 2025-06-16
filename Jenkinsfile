@@ -2,31 +2,41 @@ pipeline {
     agent any
 
     environment {
-        // This must match the name of your SonarQube server in "Configure System"
-        SONARQUBE_SERVER = 'Local-SonarQube'
+        SONARQUBE_ENV = 'Local-SonarQube' // Change to the actual name of your configured SonarQube server
     }
 
-   stage('Clone Repository') {
-    steps {
-        git branch: 'main', url: 'https://github.com/yashwagh30/EcoHarmonydocker.git'
-    }
-}
+    stages {
+        stage('Clone Repository') {
+            steps {
+                git branch: 'main', url: 'https://github.com/yashwagh30/EcoHarmonydocker.git'
+            }
+        }
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv("${SONARQUBE_SERVER}") {
+                withSonarQubeEnv("${env.SONARQUBE_ENV}") {
                     sh '''
                         sonar-scanner \
-                        -Dsonar.projectKey=eco-harmony \
-                        -Dsonar.sources=. \
-                        -Dsonar.host.url=http://localhost:9000 \
-                        -Dsonar.login=${SONAR_TOKEN}
+                          -Dsonar.projectKey=EcoHarmony \
+                          -Dsonar.sources=. \
+                          -Dsonar.host.url=$SONAR_HOST_URL \
+                          -Dsonar.login=$SONAR_AUTH_TOKEN
                     '''
                 }
             }
         }
     }
 
-    // Make sure to bind SONAR_TOKEN from credentials
-    // either in the pipeline UI or using credentials binding plugin
+    post {
+        always {
+            echo 'Pipeline finished.'
+        }
+        success {
+            echo 'Pipeline completed successfully.'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
 
