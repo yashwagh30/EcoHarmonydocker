@@ -1,14 +1,14 @@
 pipeline {
     agent any
 
-    tools {
-        // This should match the name of your SonarScanner in Jenkins tools
-        Local-SonarQube 'SonarScanner'
+    environment {
+        // This must match the name of your SonarQube server in "Configure System"
+        SONARQUBE_SERVER = 'Local-SonarQube'
     }
 
-    environment {
-        // Set your SonarQube server name (must match Jenkins global config)
-        SONARQUBE_ENV = 'SONAR_TOKEN'
+    tools {
+        // If you're using Maven or Gradle, declare it here.
+        // sonar-scanner is NOT declared here
     }
 
     stages {
@@ -20,10 +20,19 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv("${SONARQUBE_ENV}") {
-                    sh 'sonar-scanner -Dsonar.projectKey=eco-harmony -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=sqa_2c3afc0b54d4b089a98d86dc3f600eb077636683'
+                withSonarQubeEnv("${SONARQUBE_SERVER}") {
+                    sh '''
+                        sonar-scanner \
+                        -Dsonar.projectKey=eco-harmony \
+                        -Dsonar.sources=. \
+                        -Dsonar.host.url=http://localhost:9000 \
+                        -Dsonar.login=${SONAR_TOKEN}
+                    '''
                 }
             }
         }
     }
+
+    // Make sure to bind SONAR_TOKEN from credentials
+    // either in the pipeline UI or using credentials binding plugin
 }
