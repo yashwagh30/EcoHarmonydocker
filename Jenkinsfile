@@ -10,7 +10,8 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git 'https://github.com/yashwagh30/EcoHarmonydocker.git'
+                git branch: 'main', url: 'https://github.com/yashwagh30/EcoHarmonydocker.git'
+
             }
         }
 
