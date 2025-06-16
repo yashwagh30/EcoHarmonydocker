@@ -15,7 +15,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv("${env.SONARQUBE_ENV}") {
-                    sh '''
+                    bat '''
                         sonar-scanner \
                           -Dsonar.projectKey=EcoHarmony \
                           -Dsonar.sources=. \
