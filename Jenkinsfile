@@ -2,7 +2,13 @@ pipeline {
     agent any
 
     tools {
-        SonarScanner 'SonarScanner'  // Must match tool name in Jenkins config
+        // This should match the name of your SonarScanner in Jenkins tools
+        sonarQubeScanner 'SonarScanner'
+    }
+
+    environment {
+        // Set your SonarQube server name (must match Jenkins global config)
+        SONARQUBE_ENV = 'SONAR_TOKEN'
     }
 
     environment {
