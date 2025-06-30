@@ -21,7 +21,7 @@ jobs:
             docker push $DOCKERHUB_USERNAME/$DOCKERHUB_REPO:latest
       - add_ssh_keys:
           fingerprints:
-            - "your:ssh:key:fingerprint"
+            - "SHA256:v7sQkiRxODHS2ZO8ef4V9nfdcXyn5ugj0vo8+Mhd4VY"
       - run:
           name: Deploy to EC2
           command: |
