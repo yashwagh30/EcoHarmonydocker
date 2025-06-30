@@ -44,11 +44,11 @@ jobs:
             docker build -t yashwagh30/ecoharmony:latest .
             docker push yashwagh30/ecoharmony:latest
       
-      # Deployment
+      # Deployment with PROPERLY ESCAPED HEREDOC
       - run:
           name: Deploy to EC2
           command: |
-            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa_* ec2-user@13.201.87.22 << 'EOF'
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa_* ec2-user@13.201.87.22 \<< 'EOF'
             docker pull yashwagh30/ecoharmony:latest
             docker stop ecoharmony-container || true
             docker rm ecoharmony-container || true
