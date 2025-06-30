@@ -12,19 +12,21 @@ jobs:
           fingerprints:
             - "SHA256:jqchFsMzc2aYy2+8SmbnvmXvnCkkAQHZOgjjpOM9g38"
       
-      # Verify SSH connection
+      # Enhanced SSH Debugging
       - run:
-          name: Test SSH Connection
+          name: Debug SSH Connection
           command: |
-            ssh -o StrictHostKeyChecking=no ec2-user@13.201.87.22 "echo 'SSH connection successful!'"
-
-      - run:
-      name: Debug SSH Connection
-      command: |
-        mkdir -p ~/.ssh
-        chmod 700 ~/.ssh
-        ssh-keyscan 13.201.87.22 >> ~/.ssh/known_hosts
-        ssh -vvv -o StrictHostKeyChecking=no ec2-user@13.201.87.22 "echo 'SSH connection successful!'"
+            mkdir -p ~/.ssh
+            chmod 700 ~/.ssh
+            echo "=== SSH Key Location ==="
+            ls -la ~/.ssh/
+            echo "=== Known Hosts ==="
+            ssh-keyscan -v 13.201.87.22 >> ~/.ssh/known_hosts
+            cat ~/.ssh/known_hosts
+            echo "=== Connection Test ==="
+            ssh -vvv -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa_* ec2-user@13.201.87.22 "echo 'SSH connection successful!'"
+            echo "=== Key Scan ==="
+            ssh-keyscan -v 13.201.87.22
       
       # Docker Setup
       - setup_remote_docker
@@ -42,16 +44,16 @@ jobs:
             docker build -t yashwagh30/ecoharmony:latest .
             docker push yashwagh30/ecoharmony:latest
       
-      # Deployment - PROPERLY ESCAPED HEREDOC
+      # Deployment
       - run:
           name: Deploy to EC2
           command: |
-            ssh -o StrictHostKeyChecking=no ec2-user@13.201.87.22 \<< 'ENDSSH'
+            ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa_* ec2-user@13.201.87.22 << 'EOF'
             docker pull yashwagh30/ecoharmony:latest
             docker stop ecoharmony-container || true
             docker rm ecoharmony-container || true
             docker run -d -p 80:80 --name ecoharmony-container yashwagh30/ecoharmony:latest
-            ENDSSH
+            EOF
 
 workflows:
   version: 2
