@@ -34,7 +34,7 @@ jobs:
             docker build -t yashwagh30/ecoharmony:latest .
             docker push yashwagh30/ecoharmony:latest
       
-      # Deployment
+      # Deployment (Fixed heredoc syntax)
       - run:
           name: Deploy to EC2
           command: |
