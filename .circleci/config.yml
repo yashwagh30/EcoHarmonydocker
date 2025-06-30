@@ -13,6 +13,7 @@ jobs:
           command: |
             mkdir -p ~/.ssh
             cat > ~/.ssh/circleci-deploy-key << 'EOF'
+<<<<<<< HEAD
             -----BEGIN OPENSSH PRIVATE KEY-----
             b3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAACFwAAAAdzc2gtcn
             NhAAAAAwEAAQAAAgEA6Mi10Fyckpyle6VaD4+w01PeCaQOZISi8f1qI4w3Mx3qEuj4NQB7
@@ -62,6 +63,57 @@ jobs:
             Y+IudDppDAZL6Z5wxcQviMQvFEN4f9/F5Y3OOH6MD3Q9jQuj7FmPF2401pwJth7FDO+LSp
             WBx6MF5Bllo3AAAAD2NpcmNsZWNpLWRlcGxveQECAw==
             -----END OPENSSH PRIVATE KEY-----
+=======
+           -----BEGIN OPENSSH PRIVATE KEY-----
+           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
+           -----END OPENSSH PRIVATE KEY-----
+>>>>>>> 1453f329e5db9d91a78a5205b832bfd3f0b6de70
             EOF
             chmod 600 ~/.ssh/circleci-deploy-key
             cat >> ~/.ssh/config <<EOF
