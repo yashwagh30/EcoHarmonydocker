@@ -10,7 +10,7 @@ jobs:
       # SSH Setup using CircleCI's SSH key management
       - add_ssh_keys:
           fingerprints:
-            - "SHA256:V2xbQe05p9W5NsIZbpuAganMax2wZ8S657MLq9L33fM"
+            - "SHA256:jqchFsMzc2aYy2+8SmbnvmXvnCkkAQHZOgjjpOM9g38"
       
       # Verify SSH connection
       - run:
