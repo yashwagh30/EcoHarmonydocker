@@ -25,6 +25,8 @@ jobs:
       - run:
           name: Deploy to EC2
           command: |
+            echo $SSH_USER
+            echo $SSH_HOST
             ssh -o StrictHostKeyChecking=no $SSH_USER@$SSH_HOST '
               docker pull '$DOCKERHUB_USERNAME'/'$DOCKERHUB_REPO':latest
               docker stop my-website || true
