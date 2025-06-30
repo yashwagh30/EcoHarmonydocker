@@ -1,0 +1,38 @@
+version: 2.1
+
+jobs:
+  build-and-deploy:
+    docker:
+      - image: cimg/base:stable
+    environment:
+      DOCKER_USERNAME: yashwagh30
+    steps:
+      - checkout
+      
+      - setup_remote_docker
+      
+      - run:
+          name: Docker Login
+          command: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      
+      - run:
+          name: Build and Push Docker Image
+          command: |
+            docker build -t $DOCKER_USERNAME/ecoharmony:latest .
+            docker push $DOCKER_USERNAME/ecoharmony:latest
+      
+      - run:
+          name: Deploy to EC2
+          command: |
+            ssh -o StrictHostKeyChecking=no ec2-user@$13.201.87.22 << 'ENDSSH'
+            docker pull $DOCKER_USERNAME/ecoharmony:latest
+            docker stop ecoharmony-container || true
+            docker rm ecoharmony-container || true
+            docker run -d -p 80:80 --name ecoharmony-container $DOCKER_USERNAME/ecoharmony:latest
+            ENDSSH
+
+workflows:
+  version: 2
+  deploy:
+    jobs:
+      - build-and-deploy
