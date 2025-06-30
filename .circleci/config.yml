@@ -17,6 +17,14 @@ jobs:
           name: Test SSH Connection
           command: |
             ssh -o StrictHostKeyChecking=no ec2-user@13.201.87.22 "echo 'SSH connection successful!'"
+
+      - run:
+      name: Debug SSH Connection
+      command: |
+        mkdir -p ~/.ssh
+        chmod 700 ~/.ssh
+        ssh-keyscan 13.201.87.22 >> ~/.ssh/known_hosts
+        ssh -vvv -o StrictHostKeyChecking=no ec2-user@13.201.87.22 "echo 'SSH connection successful!'"
       
       # Docker Setup
       - setup_remote_docker
